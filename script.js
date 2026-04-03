@@ -28,3 +28,22 @@ btn.addEventListener('click', function() {
         avatar.src = images[imageIndex];
     }
 });
+var audio = document.getElementById("bg-music");
+
+// 每当音乐被暂停时触发
+audio.onpause = function() {
+    // 检查是否是用户点“停止”按钮停的
+    // 如果不是，且音乐还没播完，就尝试自动恢复
+    if (!audio.ended && audio.currentTime > 0) {
+        console.log("检测到异常中断，尝试恢复播放...");
+        audio.play().catch(e => {
+            console.log("恢复播放失败，可能需要用户再次点击屏幕");
+        });
+    }
+};
+
+// 增加错误监听
+audio.onerror = function() {
+    console.error("音乐文件加载出错，可能是网络断开或文件过大");
+    alert("网络不太好，音乐加载失败了，请刷新重试。");
+};
