@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人名片 - 三人帮</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 背景音乐控制 -->
+    <div id="music-control" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+    </div>
+<audio id="bg-music" loop preload="auto">
+
+    <!-- <audio id="bg-music" loop> -->
+        <!-- 建议将文件名改为 music.mp3 避免中文乱码 -->
+        <source src="./music.mp3" type="audio/mpeg">
+        您的浏览器不支持音频。
+    </audio>
+
+    <!-- 2. 个人名片卡片 (必须在脚本之前) -->
+    <div class="card">
+        <img id="avatar" src="./omg.jpg" alt="头像">
+        <h1 id="name">三人帮</h1>
+        <p>三人行，必有我师焉</p>
+        <button id="btn">点我换颜色和头像</button>
+    </div>
+
+    <!-- 3. 脚本 (必须放在页面内容的最后面) -->
+    <script src="script.js"></script>
+
+    <!-- 音乐控制脚本 -->
+    <script>
+        var audio = document.getElementById("bg-music");
+        var icon = document.getElementById("music-icon");
+
+        document.addEventListener('click', function() {
+            audio.play().catch(function(e) { console.log(e); });
+        }, { once: true });
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                icon.innerHTML = "🎵";
+            } else {
+                audio.pause();
+                icon.innerHTML = "🔇";
+            }
+        }
+    </script>
+</body>
+</html>

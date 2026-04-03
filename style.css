@@ -1,0 +1,49 @@
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 使用 min-height 确保内容多时也能滚动 */
+    margin: 0;
+    font-family: sans-serif; /* 加上字体看起来更专业 */
+}
+
+.card {
+    background: white;
+    /* 核心修改：宽度适配 */
+    width: 90%;          /* 手机端占据屏幕 90% 的宽度 */
+    max-width: 400px;    /* 电脑端最大只到 400px，防止过宽 */
+    
+    /* 核心修改：固定间距代替百分比 */
+    padding: 30px;       /* 固定的内边距，不再随屏幕宽度剧烈变动 */
+    border-radius: 20px; /* 固定圆角，看起来更精致 */
+    
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    box-sizing: border-box; /* 确保 padding 不会撑大整个盒子 */
+}
+
+img {
+    width: 120px;        /* 固定图片大小 */
+    height: 120px;
+    object-fit: cover;   /* 防止图片变形 */
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    /* 固定按钮间距 */
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;        /* 手机端按钮通常撑满卡片更好按 */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
